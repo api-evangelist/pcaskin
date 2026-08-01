@@ -1,0 +1,54 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: https://pcaskin.com/llms.txt
+server:
+  name: PCA SKIN (Universal Commerce Protocol)
+  transport: http
+  url: https://pcaskin.com/api/ucp/mcp
+  content_type: application/json
+  protocol: Universal Commerce Protocol (UCP)
+  spec: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
+  supported_versions:
+  - '2026-04-08'
+  - '2026-01-23'
+  discovery: https://pcaskin.com/.well-known/ucp
+  backend: https://pca-skin-prod.myshopify.com/api/ucp/mcp
+  platform: Shopify
+notes: >-
+  Live, provider-published UCP agent-commerce MCP endpoint. tools/list over the
+  public endpoint requires a UCP agent profile URI (returns error
+  invalid_profile_url / "Missing profile uri" without one), so the tool surface
+  below is taken verbatim from the provider's published /llms.txt agent flow and
+  the UCP shopping capabilities in /.well-known/ucp. Checkout requires
+  contemporaneous human/buyer approval; the endpoint is rate-limited per IP
+  (back off on 429).
+tools:
+- name: search_catalog
+  description: Search the store catalog for products matching a buyer's intent.
+  capability: dev.ucp.shopping.catalog.search
+- name: create_cart
+  description: Create a cart and add desired items.
+  capability: dev.ucp.shopping.cart
+- name: create_checkout
+  description: Start the purchase/checkout flow for a cart.
+  capability: dev.ucp.shopping.checkout
+- name: update_checkout
+  description: Set shipping address and fulfillment method on a checkout.
+  capability: dev.ucp.shopping.fulfillment
+- name: complete_checkout
+  description: Finalize the purchase — buyer must explicitly approve payment.
+  capability: dev.ucp.shopping.checkout
+capabilities:
+- dev.ucp.shopping.checkout
+- dev.ucp.shopping.fulfillment
+- dev.ucp.shopping.discount
+- dev.ucp.shopping.cart
+- dev.ucp.shopping.order
+- dev.ucp.shopping.catalog.search
+- dev.ucp.shopping.catalog.lookup
+- dev.shopify.catalog
+payment_handlers:
+- com.google.pay
+- dev.shopify.card
+- dev.shopify.shop_pay

@@ -1,8 +1,15 @@
 aid: pcaskin
-name: Pcaskin
-description: 'Pcaskin is a company surfaced as a portfolio company of norwest-venture-partners and added
-  to the API Evangelist network as a stub for enrichment. Sector: unknown. This profile is a lead awaiting
-  the enrichment pipeline.'
+name: PCA SKIN
+description: >-
+  PCA SKIN is a professional skincare brand specializing in dermatologically tested
+  chemical peels and result-oriented corrective products, positioned as a leading
+  professional chemical-peel brand among estheticians and skincare professionals. The
+  brand's direct-to-consumer store at pcaskin.com is built on Shopify and exposes a
+  modern agent-commerce surface: it implements the Universal Commerce Protocol (UCP)
+  with a hosted MCP endpoint plus read-only storefront JSON, so AI shopping agents can
+  discover the catalog, build carts, and drive buyer-approved checkout. Surfaced as a
+  portfolio company of Norwest Venture Partners and enriched by the API Evangelist
+  pipeline from the store's published agent surface (/llms.txt, /.well-known/ucp).
 url: https://raw.githubusercontent.com/api-evangelist/pcaskin/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,18 +17,75 @@ x-backed-by:
 - norwest-venture-partners
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-- Unknown
-apis: []
+- Skincare
+- Beauty
+- Cosmetics
+- Ecommerce
+- Retail
+- Agent Commerce
+- Universal Commerce Protocol
+- MCP
+- Shopify
+image: https://pcaskin.com/cdn/shop/files/PCA_SKIN_logo.png
+apis:
+- name: PCA SKIN Agent Commerce (UCP)
+  description: >-
+    Universal Commerce Protocol agent-commerce surface for the PCA SKIN Shopify store —
+    a hosted MCP endpoint (search_catalog, create_cart, create_checkout, update_checkout,
+    complete_checkout) plus read-only storefront JSON for catalog browsing. Checkout
+    requires contemporaneous buyer approval.
+  humanURL: https://pcaskin.com
+  baseURL: https://pcaskin.com/api/ucp/mcp
+  tags:
+  - Agent Commerce
+  - Universal Commerce Protocol
+  - MCP
+  - Shopify
+  properties:
+  - type: MCPServer
+    url: mcp/pcaskin-mcp.yml
+  - type: Conventions
+    url: conventions/pcaskin-conventions.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: MCPServer
+  url: mcp/pcaskin-mcp.yml
+- type: WellKnown
+  url: well-known/pcaskin-well-known.yml
+- type: LLMsTxt
+  url: llms/pcaskin-llms.txt
+- type: Conventions
+  url: conventions/pcaskin-conventions.yml
+- type: DomainSecurity
+  url: security/pcaskin-domain-security.yml
+- type: PrivacyPolicy
+  url: https://pcaskin.com/policies/privacy-policy
+- type: TermsOfService
+  url: https://pcaskin.com/policies/terms-of-service
 - type: Website
   url: https://pcaskin.com
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 6
+  pass: local-v1

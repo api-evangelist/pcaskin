@@ -1,0 +1,59 @@
+generated: '2026-07-20'
+method: searched
+source: https://pcaskin.com/llms.txt
+summary: >-
+  Cross-cutting agent-commerce conventions for the PCA SKIN Shopify storefront,
+  captured from the provider's published /llms.txt and /.well-known/ucp
+  (Universal Commerce Protocol). This store exposes an agent surface (UCP MCP +
+  read-only storefront JSON) rather than a traditional REST API.
+authentication:
+  style: none-for-read; buyer-approval-for-write
+  read_only: Read-only browsing endpoints require no authentication.
+  transacting: >-
+    Checkout must be approved by a human buyer at the moment of payment; agents
+    cannot complete payment without explicit contemporaneous buyer consent.
+  shop_pay: >-
+    Agents that cannot obtain contemporaneous buyer approval should route the
+    purchase through the Shop skill (https://shop.app/SKILL.md) via Shop Pay.
+versioning:
+  scheme: dated-protocol-version
+  current: '2026-04-08'
+  supported: ['2026-04-08', '2026-01-23']
+  discovery: https://pcaskin.com/.well-known/ucp
+rate_limiting:
+  documented: true
+  scope: per-IP on the UCP MCP endpoint
+  signal: HTTP 429
+  guidance: Back off on 429 responses.
+request_context:
+  documented: true
+  fields:
+  - context.address_country
+  - context.currency
+  purpose: Pass buyer context for accurate pricing and availability.
+transaction_flow:
+  - discover — GET /.well-known/ucp to confirm capabilities
+  - search — search_catalog to find products matching buyer intent
+  - cart — create_cart to add items
+  - checkout — create_checkout to start the purchase
+  - fulfill — update_checkout to set shipping address and method
+  - complete — complete_checkout (buyer must approve payment)
+read_only_endpoints:
+  products_all: GET /collections/all
+  product_page: GET /products/{handle}
+  product_json: GET /products/{handle}.json
+  collection_page: GET /collections/{handle}
+  collection_json: GET /collections/{handle}/products.json
+  search: GET /search?q={query}&type=product
+  sitemap: GET /sitemap.xml
+  agent_profile: GET /agents.md (mirrored by /llms.txt)
+idempotency:
+  supported: unknown
+  note: >-
+    Not documented in the public agent surface; UCP checkout mutation
+    idempotency is governed by the UCP shopping spec, not published per-store.
+platform: Shopify (native UCP support)
+cross_links:
+  well_known: well-known/pcaskin-well-known.yml
+  mcp: mcp/pcaskin-mcp.yml
+  llms: llms/pcaskin-llms.txt

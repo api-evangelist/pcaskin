@@ -1,0 +1,18 @@
+generated: '2026-07-20'
+method: searched
+host: https://pcaskin.com
+documents:
+- path: /.well-known/ucp
+  status: 200
+  file: pcaskin-ucp.json
+  note: Universal Commerce Protocol merchant profile (agent-commerce discovery) — UCP 2026-04-08 + 2026-01-23
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
