@@ -15,14 +15,11 @@ server:
   discovery: https://pcaskin.com/.well-known/ucp
   backend: https://pca-skin-prod.myshopify.com/api/ucp/mcp
   platform: Shopify
-notes: >-
-  Live, provider-published UCP agent-commerce MCP endpoint. tools/list over the
-  public endpoint requires a UCP agent profile URI (returns error
-  invalid_profile_url / "Missing profile uri" without one), so the tool surface
-  below is taken verbatim from the provider's published /llms.txt agent flow and
-  the UCP shopping capabilities in /.well-known/ucp. Checkout requires
-  contemporaneous human/buyer approval; the endpoint is rate-limited per IP
-  (back off on 429).
+notes: Live, provider-published UCP agent-commerce MCP endpoint. tools/list over the public endpoint requires
+  a UCP agent profile URI (returns error invalid_profile_url / "Missing profile uri" without one), so
+  the tool surface below is taken verbatim from the provider's published /llms.txt agent flow and the
+  UCP shopping capabilities in /.well-known/ucp. Checkout requires contemporaneous human/buyer approval;
+  the endpoint is rate-limited per IP (back off on 429).
 tools:
 - name: search_catalog
   description: Search the store catalog for products matching a buyer's intent.
@@ -52,3 +49,11 @@ payment_handlers:
 - com.google.pay
 - dev.shopify.card
 - dev.shopify.shop_pay
+deployment:
+  mode: remote
+  endpoint: https://pcaskin.com/api/ucp/mcp
+  verified: probed
+  probe: live
+  tools: 13
+  checked: '2026-08-12'
+  source: catalog MCP census
