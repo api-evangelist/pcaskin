@@ -49,7 +49,7 @@ tags:
 - Cosmetics
 - E-Commerce
 - Retail
-- Agent Commerce
+- Agentic Commerce
 - Universal Commerce Protocol
 - MCP
 - Shopify
@@ -75,6 +75,11 @@ apis:
   humanURL: https://pcaskin.com
   baseURL: https://pcaskin.com/api/ucp/mcp
   tags:
+  - Agentic Commerce
+  - Universal Commerce Protocol
+  - MCP
+  - Shopify
+  tags_raw:
   - Agent Commerce
   - Universal Commerce Protocol
   - MCP
