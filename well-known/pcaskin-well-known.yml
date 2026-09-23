@@ -1,18 +1,25 @@
 generated: '2026-07-20'
 method: searched
 host: https://pcaskin.com
-documents:
-- path: /.well-known/ucp
-  status: 200
-  file: pcaskin-ucp.json
-  note: Universal Commerce Protocol merchant profile (agent-commerce discovery) — UCP 2026-04-08 + 2026-01-23
-- path: /.well-known/security.txt
-  status: 404
-- path: /.well-known/openid-configuration
-  status: 404
-- path: /.well-known/oauth-authorization-server
-  status: 404
-- path: /.well-known/api-catalog
-  status: 404
-- path: /.well-known/ai-plugin.json
-  status: 404
+hosts:
+- host: https://pcaskin.com
+  documents:
+  - path: /.well-known/ucp
+    status: 200
+    file: pcaskin-ucp.json
+    note: Universal Commerce Protocol merchant profile (agent-commerce discovery) — UCP 2026-04-08 + 2026-01-23
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+x-shape-fix:
+  converted: '2026-08-20'
+  from: documents
+  note: Rewritten into hosts[] -> documents[], the only shape well_known_docs() in score.rb reads. A served
+    .well-known surface recorded in any other shape scores as absent.
