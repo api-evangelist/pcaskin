@@ -89,6 +89,9 @@ apis:
     url: mcp/pcaskin-mcp.yml
   - type: Conventions
     url: conventions/pcaskin-conventions.yml
+  x-surface: platform-generated
+  x-platform: shopify
+  x-platform-surface: ucp
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
